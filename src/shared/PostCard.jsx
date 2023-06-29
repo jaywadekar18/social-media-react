@@ -28,7 +28,6 @@ function PostCard({ detail }) {
     fetch(`/api/posts/like/${_id}`, {
       method: "POST",
       headers,
-      // body: JSON.stringify(""),
     })
       .then((res) => {
         console.log(res);
@@ -36,13 +35,9 @@ function PostCard({ detail }) {
       })
       .then((res) => {
         console.log(res);
-        // const found = user.bookmarks.find(({ id }) => id === res.post.id);
-        // if (found) return;
         if (res.posts) {
           setAllPosts(res.posts);
         }
-
-        //todo -->handle error
       })
       .catch((err) => console.log(err));
   };
@@ -55,7 +50,6 @@ function PostCard({ detail }) {
     fetch(`/api/posts/dislike/${_id}`, {
       method: "POST",
       headers,
-      // body: JSON.stringify(""),
     })
       .then((res) => {
         console.log(res);
@@ -63,13 +57,9 @@ function PostCard({ detail }) {
       })
       .then((res) => {
         console.log(res);
-        // const found = user.bookmarks.find(({ id }) => id === res.post.id);
-        // if (found) return;
         if (res.posts) {
           setAllPosts(res.posts);
         }
-
-        //todo -->handle error
       })
       .catch((err) => console.log(err));
   };
@@ -79,7 +69,6 @@ function PostCard({ detail }) {
     fetch(`/api/users/bookmark/${_id}`, {
       method: "POST",
       headers,
-      // body: JSON.stringify(""),
     })
       .then((res) => {
         console.log(res);
@@ -87,8 +76,6 @@ function PostCard({ detail }) {
       })
       .then((res) => {
         console.log(res);
-        // const found = user.bookmarks.find(({ id }) => id === res.post.id);
-        // if (found) return;
         if (res.bookmarks) {
           const userDetail = {
             ...user,
@@ -96,8 +83,6 @@ function PostCard({ detail }) {
           };
           setUserDetail(userDetail);
         }
-
-        //todo -->handle error
       })
       .catch((err) => console.log(err));
   };
@@ -105,8 +90,6 @@ function PostCard({ detail }) {
     return Boolean(user?.bookmarks?.find((post) => _id === post._id));
   };
   const isLiked = () => {
-    // console.log("detail", detail);
-
     const found = detail?.likes?.likedBy?.find(
       (liker) => liker?._id === JSON.parse(localStorage.getItem("user"))._id
     );
@@ -119,7 +102,6 @@ function PostCard({ detail }) {
     fetch(`/api/users/remove-bookmark/${_id}`, {
       method: "POST",
       headers,
-      // body: JSON.stringify(""),
     })
       .then((res) => {
         console.log(res);
@@ -127,8 +109,6 @@ function PostCard({ detail }) {
       })
       .then((res) => {
         console.log(res);
-        // const found = user.bookmarks.find(({ id }) => id === res.post.id);
-        // if (found) return;
         if (res.bookmarks) {
           const userDetail = {
             ...user,
@@ -138,8 +118,6 @@ function PostCard({ detail }) {
           };
           setUserDetail(userDetail);
         }
-
-        //todo -->handle error
       })
       .catch((err) => console.log(err));
   };
@@ -153,7 +131,6 @@ function PostCard({ detail }) {
       handleEdit();
       setAction("Select");
     } else {
-      //delete
       setAction("Select");
     }
   };
@@ -186,10 +163,6 @@ function PostCard({ detail }) {
           setAllPosts(res.posts);
           setEdit(false);
         }
-        // const found = user.bookmarks.find(({ id }) => id === res.post.id);
-        // if (found) return;
-
-        //todo -->handle error
       })
       .catch((err) => console.log(err));
   };
