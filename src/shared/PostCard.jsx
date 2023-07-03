@@ -41,6 +41,28 @@ function PostCard({ detail }) {
       })
       .catch((err) => console.log(err));
   };
+  const handleDelete = () => {
+    const headers = new Headers();
+    headers.append(
+      "authorization",
+      JSON.parse(localStorage.getItem("user")).token
+    );
+    fetch(`/api/posts/${_id}`, {
+      method: "DELETE",
+      headers,
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.posts) {
+          setAllPosts(res.posts);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   const handleRemoveLike = () => {
     const headers = new Headers();
     headers.append(
@@ -131,6 +153,7 @@ function PostCard({ detail }) {
       handleEdit();
       setAction("Select");
     } else {
+      handleDelete();
       setAction("Select");
     }
   };
@@ -220,6 +243,9 @@ function PostCard({ detail }) {
           ) : (
             <FaRegHeart onClick={handleLike} />
           )}
+          <span>
+            {detail?.likes?.likeCount > 0 ? detail?.likes?.likeCount : ""}
+          </span>
         </p>
         <p>
           {isBookmarked() ? (

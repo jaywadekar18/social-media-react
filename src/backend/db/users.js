@@ -40,6 +40,6 @@ export const users = [
     updatedAt: formatDate(),
     bio: "College student..",
     avatar:
-      "https://tse4.mm.bing.net/th?id=OIP.7tTAo8gFMfyI-o-EjaaxKQHaHa&pid=Api&P=0&h=180",
+      "https://tse4.mm.bing.net/th?id=OIP.izrjMmF0gU6MZgFHALX_wgHaHa&pid=Api&P=0&h=180",
   },
 ];

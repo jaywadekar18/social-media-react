@@ -118,6 +118,10 @@ nav {
 .modal-input-box {
   width: 100%;
 }
+.heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 .modal-content img {
   width: 40px;
   height: 40px;

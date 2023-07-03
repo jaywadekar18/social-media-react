@@ -9,14 +9,17 @@ function Home() {
   const [form, setForm] = useState({
     newPostContent: "",
   });
-  const { userPosts, setUserPosts } = useContext(PostContext);
+  const { userPosts, setUserPosts, allPosts } = useContext(PostContext);
   const { setUserDetail, isLoggedIn, user } = useContext(AuthContext);
   const [sort, setSort] = useState("trending");
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getUserPosts();
     getAllUsers();
-  }, []);
+  }, [allPosts]);
+  useEffect(() => {
+    setUserPosts(filterPosts(sort));
+  }, [allPosts]);
   const getAllUsers = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     fetch("/api/users")
@@ -73,6 +76,7 @@ function Home() {
       .then((res) => {
         console.log(res);
         setForm({ newPostContent: "" });
+        getUserPosts();
       })
       .catch((err) => console.log(err));
     // setForm({ newPostContent: "" });

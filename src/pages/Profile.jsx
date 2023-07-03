@@ -72,7 +72,7 @@ function Profile() {
         }
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, [userId, showModal]);
   const isAleredyFOllwed = () => {
     return user?.following.some(
       ({ username }) => userProfile?.username === username

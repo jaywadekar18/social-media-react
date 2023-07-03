@@ -27,7 +27,9 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <NavLink to="/home">New tilee</NavLink>
+        <NavLink to="/home" className="heading">
+          Social Media app
+        </NavLink>
       </nav>
       <Routes>
         <Route path="/login" element={<Login />}></Route>
