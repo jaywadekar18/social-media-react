@@ -82,6 +82,7 @@ function Profile() {
     <div className="d-flex-row">
       <Sidebar />
       <div>
+        <p className="page-title">Profile</p>
         <div className="d-flex">
           <img
             className="user-profile"
@@ -92,17 +93,30 @@ function Profile() {
             {userProfile?.firstName} {userProfile?.lastName}
           </p>
         </div>
-        <p>{userProfile?.username}</p>
+        <p>@{userProfile?.username}</p>
         <p>{userProfile?.bio}</p>
+        <p>
+          {userProfile?.portfolio && (
+            <a target="_blank" rel="noreferrer" href={userProfile?.portfolio}>
+              {userProfile.portfolio}
+            </a>
+          )}
+        </p>
         {userProfile?.username === user?.username && (
-          <button onClick={editProfile}>Edit profile</button>
+          <button className="custom-btn" onClick={editProfile}>
+            Edit profile
+          </button>
         )}
         {userProfile?.username !== user?.username && (
           <div>
             {isAleredyFOllwed() ? (
-              <button onClick={unfollowUser}>Unfollow</button>
+              <button className="custom-btn" onClick={unfollowUser}>
+                Unfollow
+              </button>
             ) : (
-              <button onClick={followUser}>Follow</button>
+              <button className="custom-btn" onClick={followUser}>
+                Follow
+              </button>
             )}
           </div>
         )}

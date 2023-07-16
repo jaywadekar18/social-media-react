@@ -15,6 +15,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bio: "I am good boyy",
+    portfolio: "https://www.yahoo.com/",
     avatar:
       "https://tse4.mm.bing.net/th?id=OIP.7tTAo8gFMfyI-o-EjaaxKQHaHa&pid=Api&P=0&h=180",
   },
@@ -27,6 +28,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bio: "I am cool guy",
+    portfolio: "https://www.google.com/",
     avatar:
       "https://tse3.mm.bing.net/th?id=OIP.q2gObYBRPGor08UW4amkBAHaHa&pid=Api&P=0&h=180",
   },
@@ -39,6 +41,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     bio: "College student..",
+    portfolio: "https://www.uber.com/",
     avatar:
       "https://tse4.mm.bing.net/th?id=OIP.izrjMmF0gU6MZgFHALX_wgHaHa&pid=Api&P=0&h=180",
   },

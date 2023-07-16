@@ -198,7 +198,7 @@ function PostCard({ detail }) {
             src={user.username === username ? user?.avatar : avatar}
             alt="profile pic"
           />
-          <p>{detail?.username}</p>
+          <p>@{detail?.username}</p>
         </div>
         <div>
           {username === user.username && (
@@ -238,11 +238,13 @@ function PostCard({ detail }) {
 
       <div className="post-footer d-flex-row">
         <p>
-          {isLiked() ? (
-            <FaHeart onClick={handleRemoveLike} />
-          ) : (
-            <FaRegHeart onClick={handleLike} />
-          )}
+          <span style={{ marginRight: "5px" }}>
+            {isLiked() ? (
+              <FaHeart onClick={handleRemoveLike} />
+            ) : (
+              <FaRegHeart onClick={handleLike} />
+            )}
+          </span>
           <span>
             {detail?.likes?.likeCount > 0 ? detail?.likes?.likeCount : ""}
           </span>

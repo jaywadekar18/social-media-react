@@ -8,6 +8,7 @@ export default function Modal({ profile, setShowModal }) {
     lastName: profile.lastName,
     avatar: profile.avatar,
     bio: profile.bio,
+    portfolio: profile?.portfolio ?? "https://www.google.com/",
     // endDate: profile.name
   });
   const changeHandler = (e) => {
@@ -53,7 +54,7 @@ export default function Modal({ profile, setShowModal }) {
   const isFormValid = () => {
     let isValid = true;
     for (const key in form) {
-      if (form[key].length === 0) {
+      if (form[key]?.length === 0) {
         isValid = false;
       }
     }
@@ -62,7 +63,7 @@ export default function Modal({ profile, setShowModal }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <p>Edit Profile</p>
+        <p className="page-title">Edit Profile</p>
         <span
           className="close-btn"
           onClick={() => {
@@ -96,6 +97,13 @@ export default function Modal({ profile, setShowModal }) {
           className="modal-input-box"
           name="bio"
           value={form.bio}
+          onChange={changeHandler}
+        />
+        <label>Portfolio </label>
+        <input
+          className="modal-input-box"
+          name="portfolio"
+          value={form.portfolio}
           onChange={changeHandler}
         />
         <label>Avatar </label>

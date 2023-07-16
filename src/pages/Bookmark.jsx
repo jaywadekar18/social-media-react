@@ -9,12 +9,12 @@ function Bookmark() {
     <div className="d-flex-row">
       <Sidebar />
       <div>
-        Bookmark vvv
+        <p className="page-title">Bookmark</p>
         {user?.bookmarks?.length > 0
           ? user?.bookmarks.map((post) => (
               <PostCard key={post.id} detail={post} />
             ))
-          : "nothing here.."}
+          : "You have not bookmark anything..."}
       </div>
     </div>
   );

@@ -13,13 +13,16 @@ function Home() {
   const { setUserDetail, isLoggedIn, user } = useContext(AuthContext);
   const [sort, setSort] = useState("trending");
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     getUserPosts();
     getAllUsers();
   }, [allPosts]);
-  useEffect(() => {
-    setUserPosts(filterPosts(sort));
-  }, [allPosts]);
+
+  // useEffect(() => {
+  //   setUserPosts(filterPosts(sort));
+  // }, []);
+
   const getAllUsers = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     fetch("/api/users")
@@ -55,7 +58,7 @@ function Home() {
                 (followingUser) => followingUser.username === username
               )
           );
-          setUserPosts(userPosts);
+          setUserPosts(filterPosts(sort, userPosts));
         }
       })
       .catch((err) => console.log(err));
@@ -100,27 +103,26 @@ function Home() {
     }
     return isValid;
   };
-  const filterPosts = (filter) => {
+  const filterPosts = (filter, userPosts) => {
     if (userPosts.length <= 1) return userPosts;
     if (filter === "latest") {
       return [...userPosts].sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     } else {
-      const count = userPosts.filter(({ likes }) => likes.likeCount > 0);
-      if (count.length <= 1) {
-        return userPosts;
-      }
+      // const count = userPosts.filter(({ likes }) => likes.likeCount > 0);
+      // if (count.length <= 1) {
+      //   return userPosts;
+      // }
       return [...userPosts].sort(
         (a, b) => b.likes.likeCount - a.likes.likeCount
       );
     }
   };
-  const filter = (filter, posts) => {};
+
   const handleFilterChange = (e) => {
-    console.log("e", e.target.value);
     setSort(e.target.value);
-    const sortedPosts = filterPosts(e.target.value);
+    const sortedPosts = filterPosts(e.target.value, userPosts);
     if (sortedPosts.length > 0) setUserPosts(sortedPosts);
   };
   return (
@@ -182,7 +184,7 @@ function Home() {
                   src={profile?.avatar}
                   alt="profile pic"
                 />
-                @{profile.username}
+                <span>@{profile.username}</span>
               </div>
             ))
           : "no one to followe..."}

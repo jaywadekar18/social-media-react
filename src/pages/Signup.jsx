@@ -8,6 +8,9 @@ export default function Login() {
     confirmPassword: "",
     firstName: "",
     lastName: "",
+    username: "",
+    avatar:
+      "https://tse4.mm.bing.net/th?id=OIP.izrjMmF0gU6MZgFHALX_wgHaHa&pid=Api&P=0&h=180",
   });
   const navigate = useNavigate();
   const { setUserDetail, isLoggedIn } = useContext(AuthContext);
@@ -59,6 +62,12 @@ export default function Login() {
         value={signupForm.lastName}
         onChange={handleChange}
         name="lastName"
+      />
+      <input
+        placeholder="Enter User name..."
+        value={signupForm.username}
+        onChange={handleChange}
+        name="username"
       />
       <input
         placeholder="Enter password..."

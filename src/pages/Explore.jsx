@@ -55,7 +55,7 @@ export default function Explore() {
     <div className="d-flex-row">
       <Sidebar />
       <div>
-        Explore
+        <p className="page-title">Explore</p>
         {allPosts.length > 0
           ? allPosts.map((post) => <PostCard key={post.id} detail={post} />)
           : "nothing here.."}
